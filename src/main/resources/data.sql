@@ -1,3 +1,5 @@
+delete from	sample;
+
 insert into sample
 values(1,'John');
 

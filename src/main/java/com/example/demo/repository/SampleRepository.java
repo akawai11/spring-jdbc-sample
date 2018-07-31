@@ -15,7 +15,12 @@ public class SampleRepository {
     // 1カラムの1件
     // Idから名前を引っ張ってくる
     public String getSampleName(Long id) {
-        String sql = "SELECT NAME FROM sample WHERE id=:id";
+        String sql = "SELECT NAME FROM SAMPLE WHERE ID=:id";
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("id", id);
+
+        return namedParameterJdbcTemplate.queryForObject(sql, params, String.class);
+    }
         SqlParameterSource params = new MapSqlParameterSource()
                 .addValue("id", id);
 
