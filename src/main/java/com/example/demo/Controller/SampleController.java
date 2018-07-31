@@ -26,7 +26,7 @@ public class SampleController {
     @GetMapping("getName")
     public String getName() {
         // sampleなので固定値
-        return sampleRepository.getSampleName(1L);
+        return sampleRepository.getSampleName(1);
     }
 
     @GetMapping("findIdByName")

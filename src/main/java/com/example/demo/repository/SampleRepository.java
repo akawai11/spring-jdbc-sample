@@ -16,7 +16,7 @@ public class SampleRepository {
 
     // 1カラムの1件
     // Idから名前を引っ張ってくる
-    public String getSampleName(Long id) {
+    public String getSampleName(Integer id) {
         String sql = "SELECT NAME FROM SAMPLE WHERE ID=:id";
         SqlParameterSource params = new MapSqlParameterSource()
                 .addValue("id", id);
