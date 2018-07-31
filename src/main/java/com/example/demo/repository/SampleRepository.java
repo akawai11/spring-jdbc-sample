@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class SampleRepository {
 
@@ -21,6 +23,17 @@ public class SampleRepository {
 
         return namedParameterJdbcTemplate.queryForObject(sql, params, String.class);
     }
+
+    // 1カラムの複数件
+    // 名前からIdを引っ張ってくる
+    public List<Integer> findSampleIdByName(String name) {
+        String sql = "SELECT ID FROM SAMPLE WHERE NAME=:name";
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("name", name);
+
+        return namedParameterJdbcTemplate.queryForList(sql, params, Integer.class);
+    }
+
         SqlParameterSource params = new MapSqlParameterSource()
                 .addValue("id", id);
 
