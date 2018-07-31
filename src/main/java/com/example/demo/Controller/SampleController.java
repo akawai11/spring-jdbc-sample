@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 
+import com.example.demo.entiy.Sample;
 import com.example.demo.repository.SampleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,24 @@ public class SampleController {
         // sampleなので固定値
         for(Integer id : sampleRepository.findSampleIdByName("Sam")) {
             result += id;
+        }
+        return result;
+    }
+
+    @GetMapping("getSample")
+    public String getSample() {
+        // sampleなので固定値
+        Sample sample = sampleRepository.getSample(1);
+        return sample.id + sample.name;
+    }
+
+    @GetMapping("findSampleByName")
+    public String findSampleByName() {
+        String result = "";
+        // sampleなので固定値
+        for(Sample sample : sampleRepository.findSampleByName("Sam")) {
+            result += sample.id;
+            result += sample.name;
         }
         return result;
     }
